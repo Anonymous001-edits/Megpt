@@ -1,33 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>MeGPT – Upgraded AI</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/@mlc-ai/web-llm"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MeGPT v5 — ChatGPT Style</title>
+
+  <!-- WebLLM (browser models) -->
+  <script src="https://cdn.jsdelivr.net/npm/@mlc-ai/web-llm"></script>
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="topbar">
-        <h2>MeGPT v2</h2>
-        <button onclick="toggleDarkMode()">🌙</button>
-    </div>
+  <div id="app" class="light">
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <h1 class="brand">MeGPT</h1>
+        <button id="newChatBtn" class="btn primary">+ New Chat</button>
+      </div>
 
-    <div class="container">
-        <div class="sidebar">
-            <button onclick="newChat()">➕ New Chat</button>
-            <div id="threads"></div>
+      <div class="chats" id="threads"></div>
+
+      <div class="sidebar-bottom">
+        <label class="small">Model</label>
+        <select id="modelSelect" class="select">
+          <option value="llama-3.1-8b-instruct">Llama-3 (browser)</option>
+          <option value="vicuna-13b" disabled>Vicuna (example - disabled)</option>
+        </select>
+
+        <label class="small">System prompt</label>
+        <textarea id="systemPrompt" class="small-textarea">You are MeGPT — helpful, concise, and friendly. Answer clearly and safely.</textarea>
+
+        <div class="sidebar-actions">
+          <button id="exportBtn" class="btn">Export</button>
+          <button id="importBtn" class="btn">Import</button>
+          <button id="toggleTheme" class="btn">🌙</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="main-header">
+        <div>
+          <h2 id="chatTitle">Welcome</h2>
+          <p id="chatSubtitle" class="muted">Start a new chat or pick one from the left.</p>
+        </div>
+        <div class="header-actions">
+          <button id="copyBtn" class="btn">Copy</button>
+          <button id="clearBtn" class="btn">Clear</button>
+        </div>
+      </header>
+
+      <section id="chatArea" class="chat-area">
+        <!-- messages will appear here -->
+      </section>
+
+      <footer class="composer">
+        <div class="composer-top">
+          <div id="typingIndicator" class="typing hidden"><span></span><span></span><span></span></div>
         </div>
 
-        <div class="chat-area">
-            <div id="chat"></div>
-
-            <div class="bottom">
-                <textarea id="message" placeholder="Type a message..."></textarea>
-                <button onclick="sendMessage()">Send</button>
-            </div>
+        <div class="composer-bottom">
+          <textarea id="input" placeholder="Type your message... (Shift+Enter = newline)"></textarea>
+          <button id="sendBtn" class="btn primary">Send</button>
         </div>
-    </div>
+      </footer>
+    </main>
+  </div>
 
-    <script src="script.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
