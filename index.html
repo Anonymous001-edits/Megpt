@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MeGPT – Upgraded AI</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@mlc-ai/web-llm"></script>
+</head>
+<body>
+    <div class="topbar">
+        <h2>MeGPT v2</h2>
+        <button onclick="toggleDarkMode()">🌙</button>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <button onclick="newChat()">➕ New Chat</button>
+            <div id="threads"></div>
+        </div>
+
+        <div class="chat-area">
+            <div id="chat"></div>
+
+            <div class="bottom">
+                <textarea id="message" placeholder="Type a message..."></textarea>
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
